@@ -1,2 +1,2 @@
 <h2><?= $title ?></h2>
-<p>Welcome to the Authentication System application</p>
+<p>Welcome to the CodeIgniter Todo application</p>
