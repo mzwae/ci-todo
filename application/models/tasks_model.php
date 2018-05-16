@@ -39,25 +39,25 @@ class Tasks_model extends CI_Model
         }
     }
     // Fetches an individual taks from tasks table
-    public function get_task($id){
-      $this->db->where('task_id', $id);
-      $result = $this->db->get('tasks');
-      if ($result) {
-        return true;
-      } else {
-        return false;
-      }
-
+    public function get_task($id)
+    {
+        $this->db->where('task_id', $id);
+        $result = $this->db->get('tasks');
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
     }
-  // Deletes a task from the tasks table
-public function delete($id){
-  $this->db->where('task_id', $id);
-  $result = $this->db->delete('tasks');
-  if ($result) {
-    return true;
-  } else {
-    return false;
-  }
-
-}
+    // Deletes a task from the tasks table
+    public function delete($id)
+    {
+        $this->db->where('task_id', $id);
+        $result = $this->db->delete('tasks');
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
