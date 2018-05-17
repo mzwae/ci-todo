@@ -37,7 +37,7 @@
           <?php echo form_error('task_due_y'); ?>
           <select class="form-control" name="task_due_y">
             <option></option>
-            <?php for ($i = date("Y",strtotime(date("Y"))); $i<=date("Y",strtotime(date("Y").' +5 year')); $i++):?>
+            <?php for ($i = date("Y", strtotime(date("Y"))); $i<=date("Y", strtotime(date("Y").' +5 year')); $i++):?>
               <option value="<?=$i?>"><?=$i?></option>
             <?php endfor; ?>
           </select>
@@ -50,6 +50,28 @@
 <!-- Display Existing Tasks -->
 <table class="table table-hover">
   <?php foreach ($query->result() as $row): ?>
+    <?php
+    if (date("Y-m-d", mktime(0, 0, 0, date('m'), date('d'), date('y'))) > $row->task_due_date) {
+        echo '<tr class="list-group-item-danger">';
+    }
+    ?>
+    <?php
+    if ($row->task_due_date == null) {
+        echo ' <tr>';
+    }
+    ?>
+    <td width="80%">
+      <?php
+          if ($row->task_status == 'done') {
+              echo '<strike>' . $row->task_desc . '</strike>';
+          } else {
+              echo $row->task_desc;
+          }
+       ?>
+    </td>
+    <td width="10%">
+      <a href="tasks/delete/<?=$row->task_id?>">Delete</a>
+    </td>
 
   <?php endforeach; ?>
 </table>
