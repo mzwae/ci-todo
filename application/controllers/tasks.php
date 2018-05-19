@@ -74,6 +74,63 @@ class Tasks extends MY_Controller
               $task_due_date = null;
             }
 
+            $save_data = array(
+              'task_desc' => $this->input->post('task_desc'),
+              'task_due_date' => $task_due_date,
+              'task_status' => 'todo'
+            );
+
+            if ($this->Tasks_model->save_task($save_data)) {
+              $this->session->set_flashdata('flash_message', 'Task Created Successfully');
+            } else {
+              $this->session->set_flashdata('flash_message', 'Error Creating Task');
+
+            }
+            redirect('tasks
+            ');
+
+
         }
     }
+
+    public function status(){
+      $page_data['task_status'] = $this->uri->segment(3);
+      $task_id = $this->uri->segment(4);
+
+      if ($this->Tasks_model->change_task_status($task_id, $page_data)) {
+        $this->session->set_flashdata('flash_message', 'Task Status Changed Successfully!');
+      } else {
+        $this->session->set_flashdata('flash_message', 'Changing Task Status Failed');
+      }
+
+      redirect('tasks');
+
+    }
+
+    public function delete(){
+      $this->form_validation->set_rules('id', 'Task ID', 'required');
+
+      if ($this->input->post()) {
+        $id = $this->input->post('id');
+      } else {
+        $id = $this->uri->segment(3);
+      }
+
+      $data['page_heading'] = 'Confirm delete?';
+
+      if ($this->form_validation->run() == false) {
+        $data['query'] = $this->Tasks_model->get_task($id);
+        $this->load->view('templates/header', $data);
+        $this->load->view('tasks/delete', $data);
+        $this->load->view('templates/footer');
+      } else {
+        if ($this->Tasks_model->delete($id)) {
+          redirect('tasks');
+        }
+      }
+
+
+    }
+
+
 }
