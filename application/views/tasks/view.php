@@ -18,7 +18,7 @@
         <div class="col-md-2">
           <?php echo form_error('task_due_d'); ?>
           <select class="form-control" name="task_due_d">
-            <option></option>
+            <option>Select Day</option>
             <?php for ($i = 1; $i <= 30; $i++): ?>
               <option value="<?=$i?>"><?=date('jS', mktime($i, 0, 0, 0, $i, date('Y')))?></option>
             <?php endfor; ?>
@@ -27,7 +27,7 @@
         <div class="col-md-2">
           <?php echo form_error('task_due_m'); ?>
           <select class="form-control" name="task_due_m">
-            <option></option>
+            <option>Select Month</option>
             <?php for ($i = 1; $i <= 12; $i++): ?>
               <option value="<?=$i?>"><?=date('F', mktime(0, 0, 0, $i, 1, date('Y')))?></option>
             <?php endfor; ?>
@@ -36,7 +36,7 @@
         <div class="col-md-2">
           <?php echo form_error('task_due_y'); ?>
           <select class="form-control" name="task_due_y">
-            <option></option>
+            <option>Select Year</option>
             <?php for ($i = date("Y", strtotime(date("Y"))); $i<=date("Y", strtotime(date("Y").' +5 year')); $i++):?>
               <option value="<?=$i?>"><?=$i?></option>
             <?php endfor; ?>
@@ -72,6 +72,6 @@
     <td width="10%">
       <a href="tasks/delete/<?=$row->task_id?>">Delete</a>
     </td>
-
+</tr>
   <?php endforeach; ?>
 </table>

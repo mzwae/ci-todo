@@ -13,7 +13,7 @@
     <?php echo $row->task_desc; ?>
     <br>
     <br>
-    <?php echo form_submit('submit', 'Delete'); ?> or <a href="tasks">Cancel</a>
+    <?php echo form_submit('submit', 'Delete'); ?> or <a href="<?=base_url()?>tasks">Cancel</a>
 
     <?php echo form_hidden('id', $row->task_id); ?>
   <?php endforeach; ?>

@@ -44,7 +44,7 @@ class Tasks_model extends CI_Model
         $this->db->where('task_id', $id);
         $result = $this->db->get('tasks');
         if ($result) {
-            return true;
+            return $result;
         } else {
             return false;
         }
