@@ -49,6 +49,10 @@
 
 <!-- Display Existing Tasks -->
 <table class="table table-hover">
+  <tr>
+    <td><b>Task</b></td>
+    <td><b>Due Date</b></td>
+  </tr>
   <?php foreach ($query->result() as $row): ?>
     <?php
     if (date("Y-m-d", mktime(0, 0, 0, date('m'), date('d'), date('y'))) > $row->task_due_date) {
@@ -60,7 +64,7 @@
         echo ' <tr>';
     }
     ?>
-    <td width="80%">
+    <td width="60%">
       <?php
           if ($row->task_status == 'done') {
               echo '<strike>' . $row->task_desc . '</strike>';
@@ -69,6 +73,7 @@
           }
        ?>
     </td>
+    <td width="20%"><?php echo date_format(date_create($row->task_due_date), 'd/m/y');?></td>
     <td width="10%">
       <a href="tasks/delete/<?=$row->task_id?>">Delete</a>
     </td>

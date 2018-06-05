@@ -9,7 +9,7 @@ class Tasks extends MY_Controller
         $this->load->helper('text');
         $this->load->model('Tasks_model');
         $this->load->library('form_validation');
-        $this->form_validation->set_error_delimiters('<div class="alert alert-danger"', '</div>');
+        $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
     }
 
     public function index()
@@ -21,14 +21,7 @@ class Tasks extends MY_Controller
 
 
         if ($this->form_validation->run() == false) {
-            $page_data['job_title'] = array(
-              'name' => 'job_title',
-              'class' => 'form-control',
-              'id' => 'job_title',
-              'value' => set_value('job_title', ''),
-              'maxlength' => '100',
-              'size' => '35'
-            );
+          
             $page_data['task_desc'] = array(
               'name' => 'task_desc',
               'class' => 'form-control',
