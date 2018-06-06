@@ -21,7 +21,7 @@ class Tasks extends MY_Controller
 
 
         if ($this->form_validation->run() == false) {
-          
+
             $page_data['task_desc'] = array(
               'name' => 'task_desc',
               'class' => 'form-control',
@@ -79,8 +79,7 @@ class Tasks extends MY_Controller
               $this->session->set_flashdata('flash_message', 'Error Creating Task');
 
             }
-            redirect('tasks
-            ');
+            redirect('tasks');
 
 
         }

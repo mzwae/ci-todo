@@ -16,27 +16,24 @@
     <div class="row">
       <div class="form-group">
         <div class="col-md-2">
-          <?php echo form_error('task_due_d'); ?>
           <select class="form-control" name="task_due_d">
-            <option>Select Day</option>
+            <option disabled selected>Select Day</option>
             <?php for ($i = 1; $i <= 30; $i++): ?>
               <option value="<?=$i?>"><?=date('jS', mktime($i, 0, 0, 0, $i, date('Y')))?></option>
             <?php endfor; ?>
           </select>
         </div>
         <div class="col-md-2">
-          <?php echo form_error('task_due_m'); ?>
           <select class="form-control" name="task_due_m">
-            <option>Select Month</option>
+            <option disabled selected>Select Month</option>
             <?php for ($i = 1; $i <= 12; $i++): ?>
               <option value="<?=$i?>"><?=date('F', mktime(0, 0, 0, $i, 1, date('Y')))?></option>
             <?php endfor; ?>
           </select>
         </div>
         <div class="col-md-2">
-          <?php echo form_error('task_due_y'); ?>
           <select class="form-control" name="task_due_y">
-            <option>Select Year</option>
+            <option disabled selected>Select Year</option>
             <?php for ($i = date("Y", strtotime(date("Y"))); $i<=date("Y", strtotime(date("Y").' +5 year')); $i++):?>
               <option value="<?=$i?>"><?=$i?></option>
             <?php endfor; ?>
@@ -73,7 +70,7 @@
           }
        ?>
     </td>
-    <td width="20%"><?php echo date_format(date_create($row->task_due_date), 'd/m/y');?></td>
+    <td width="20%"><?php echo date_format(date_create($row->task_due_date), 'd/M/Y');?></td>
     <td width="10%">
       <a href="tasks/delete/<?=$row->task_id?>">Delete</a>
     </td>
