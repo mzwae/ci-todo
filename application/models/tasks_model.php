@@ -10,7 +10,7 @@ class Tasks_model extends CI_Model
     // display all tasks
     public function get_tasks()
     {
-        $query = "SELECT * FROM tasks";
+        $query = "SELECT * FROM tasks ORDER BY task_due_date ASC";
         $result = $this->db->query($query);
         if ($result) {
             return $result;
