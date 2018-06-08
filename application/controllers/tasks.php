@@ -74,9 +74,9 @@ class Tasks extends MY_Controller
             );
 
             if ($this->Tasks_model->save_task($save_data)) {
-              $this->session->set_flashdata('flash_message', 'Task Created Successfully');
+              $this->session->set_flashdata('task_created', 'Task Created Successfully');
             } else {
-              $this->session->set_flashdata('flash_message', 'Error Creating Task');
+              $this->session->set_flashdata('task_error', 'Error Creating Task');
 
             }
             redirect('tasks');
@@ -90,9 +90,9 @@ class Tasks extends MY_Controller
       $task_id = $this->uri->segment(4);
 
       if ($this->Tasks_model->change_task_status($task_id, $page_data)) {
-        $this->session->set_flashdata('flash_message', 'Task Status Changed Successfully!');
+        $this->session->set_flashdata('task_status_change', 'Task Status Changed Successfully!');
       } else {
-        $this->session->set_flashdata('flash_message', 'Changing Task Status Failed');
+        $this->session->set_flashdata('task_status_error', 'Changing Task Status Failed');
       }
 
       redirect('tasks');
@@ -117,6 +117,7 @@ class Tasks extends MY_Controller
         $this->load->view('templates/footer');
       } else {
         if ($this->Tasks_model->delete($id)) {
+            $this->session->set_flashdata('task_deleted', 'Task Deleted Successfully!');
           redirect('tasks');
         }
       }
