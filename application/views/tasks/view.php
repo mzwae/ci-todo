@@ -48,8 +48,12 @@
 <table class="table table-hover">
   <tr>
     <td><b>Task</b></td>
-    <td><b>Due Date</b></td>
-    <td><b>Status</b></td>
+    <td>
+      <b>Due Date <span class="glyphicon glyphicon-sort"></span></b>  <a href="<?=base_url()?>tasks/sort/asc">ASC</a> <a href="<?=base_url()?>tasks/sort/desc">DESC</a>
+    </td>
+    <td>
+      <b>Status</b>
+    </td>
   </tr>
   <?php foreach ($query->result() as $row): ?>
     <?php

@@ -25,7 +25,7 @@
               <li class="nav-item"><a href="<?=base_url()?>about">About</a></li>
 
           </ul>
-      
+
       </div>
     </div>
 </nav>

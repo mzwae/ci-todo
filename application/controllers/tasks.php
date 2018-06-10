@@ -125,5 +125,14 @@ class Tasks extends MY_Controller
 
     }
 
+    public function sort(){
+      $direction = $this->uri->segment(3);
+      $page_data['query'] = $this->Tasks_model->get_tasks($direction);
+
+      $this->load->view('templates/header');
+      $this->load->view('tasks/view', $page_data);
+      $this->load->view('templates/footer');
+    }
+
 
 }
