@@ -21,7 +21,8 @@ class Tasks extends MY_Controller
 
 
         if ($this->form_validation->run() == false) {
-
+            $page_data['dir'] = 'DESC';
+            $page_data['entity'] = '&darr;';
             $page_data['task_desc'] = array(
               'name' => 'task_desc',
               'class' => 'form-control',
@@ -128,6 +129,13 @@ class Tasks extends MY_Controller
     public function sort(){
       $direction = $this->uri->segment(3);
       $page_data['query'] = $this->Tasks_model->get_tasks($direction);
+      if ($direction == 'ASC') {
+        $page_data['dir'] = 'DESC';
+        $page_data['entity'] = '&darr;';
+      } else if ($direction == 'DESC') {
+        $page_data['dir'] = 'ASC';
+        $page_data['entity'] = '&uarr;';
+      }
 
       $this->load->view('templates/header');
       $this->load->view('tasks/view', $page_data);

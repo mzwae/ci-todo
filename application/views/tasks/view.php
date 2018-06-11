@@ -49,7 +49,7 @@
   <tr>
     <td><b>Task</b></td>
     <td>
-      <b>Due Date <span class="glyphicon glyphicon-sort"></span></b>  <a href="<?=base_url()?>tasks/sort/asc">ASC</a> <a href="<?=base_url()?>tasks/sort/desc">DESC</a>
+      <b>Due Date</b> | <a href="<?=base_url()?>tasks/sort/<?=$dir?>"><?=$dir?> <?=$entity?></a>
     </td>
     <td>
       <b>Status</b>
