@@ -3,6 +3,11 @@
 class Users extends CI_Controller
 {
 
+  public function __construct(){
+    parent::__construct();
+    $this->load->model('user_model');
+  }
+
   // Register a new user
     public function register()
     {

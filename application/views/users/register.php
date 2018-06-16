@@ -5,11 +5,11 @@
     <div class="col-md-4 col-md-offset-4">
       <h1 class="text-center"><?=$title?></h1>
       <div class="form-group">
-        <label>Name</label>
+        <label>First Name</label>
         <input type="text" name="first_name" class="form-control" placeholder="First Name">
       </div>
       <div class="form-group">
-        <label>Name</label>
+        <label>Last Name</label>
         <input type="text" name="last_name" class="form-control" placeholder="Last Name">
       </div>
       <div class="form-group">

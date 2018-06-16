@@ -5,7 +5,8 @@ class User_model extends CI_Model{
   public function  register($enc_password){
     //User data array
     $data = array(
-      'name' => $this->input->post('name'),
+      'first_name' => $this->input->post('first_name'),
+      'last_name' => $this->input->post('last_name'),
       'email' => $this->input->post('email'),
       'password' => $enc_password
     );
@@ -39,9 +40,9 @@ class User_model extends CI_Model{
   }
 
   // Log user in
-  public function login($username, $password){
+  public function login($email, $password){
     // Validate user Input
-    $this->db->where('username', $username);
+    $this->db->where('email', $email);
     $this->db->where('password', $password);
 
     $result = $this->db->get('users');

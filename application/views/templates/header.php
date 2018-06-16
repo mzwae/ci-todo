@@ -28,8 +28,8 @@
 
           <ul class="nav navbar-nav navbar-right">
           <?php if (!$this->session->userdata('logged_in')) : ?>
-            <li><a href="<?=base_url();?>/users/login">Login</a></li>
-            <li><a href="<?=base_url();?>/users/register">Register</a></li>
+            <li><a href="<?=base_url();?>users/login">Login</a></li>
+            <li><a href="<?=base_url();?>users/register">Register</a></li>
           <?php endif; ?>
           <?php if ($this->session->userdata('logged_in')) : ?>
             <li><a href="<?=base_url();?>/tasks">Creat List</a></li>
@@ -58,5 +58,11 @@
   }
   if ($this->session->flashdata('task_status_error')) {
       echo '<p class="alert alert-danger">' . $this->session->flashdata('task_status_error') . '</p>';
+  }
+  if ($this->session->flashdata('login_failed')) {
+      echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failed') . '</p>';
+  }
+  if ($this->session->flashdata('user_loggedin')) {
+      echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedin') . '</p>';
   }
   ?>
