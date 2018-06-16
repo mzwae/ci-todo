@@ -26,6 +26,17 @@
 
           </ul>
 
+          <ul class="nav navbar-nav navbar-right">
+          <?php if (!$this->session->userdata('logged_in')) : ?>
+            <li><a href="<?=base_url();?>/users/login">Login</a></li>
+            <li><a href="<?=base_url();?>/users/register">Register</a></li>
+          <?php endif; ?>
+          <?php if ($this->session->userdata('logged_in')) : ?>
+            <li><a href="<?=base_url();?>/tasks">Creat List</a></li>
+            <li><a href="<?=base_url();?>/users/logout">Logout</a></li>
+          <?php endif; ?>
+        </ul>
+
       </div>
     </div>
 </nav>
