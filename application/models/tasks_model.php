@@ -10,8 +10,9 @@ class Tasks_model extends CI_Model
     // display all tasks
     public function get_tasks($direction = 'ASC')
     {
-        $query = "SELECT * FROM tasks ORDER BY task_due_date " . $direction;
-        $result = $this->db->query($query);
+        $user_id = $this->session->userdata('user_id');
+        $query = "SELECT * FROM tasks WHERE user_id = ? ORDER BY task_due_date " . $direction;
+        $result = $this->db->query($query, array($user_id));
         if ($result) {
             return $result;
         } else {

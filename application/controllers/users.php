@@ -42,18 +42,20 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
-        if ($this->form_validation->run() === false) {
+        if ($this->form_validation->run() == false) {
+
             $this->load->view('templates/header');
             $this->load->view('users/login', $data);
             $this->load->view('templates/footer');
         } else {
             // Get the username
-            $username = $this->input->post('username');
+            $email = $this->input->post('email');
             // Get and encrypt the password
             $password = md5($this->input->post('password'));
 
+
             // Login user
-            $user_id = $this->user_model->login($username, $password);
+            $user_id = $this->user_model->login($email, $password);
 
             if ($user_id) {
               // Create session
@@ -69,7 +71,7 @@ class Users extends CI_Controller
               redirect('tasks');
             } else {
               // Set message
-              $this->session->set_flashdata('login_failed', 'Invalid username/password!');
+              $this->session->set_flashdata('login_failed', 'Invalid email/password!');
               redirect('users/login');
             }
 

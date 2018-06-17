@@ -13,7 +13,11 @@ class Tasks extends MY_Controller
     }
 
     public function index()
+
     {
+      if(!$this->session->userdata('logged_in')){
+        redirect('users/login');
+      }
         $this->form_validation->set_rules('task_desc', 'Task description', 'required');
         $this->form_validation->set_rules('task_due_d', 'Task due day', 'required');
         $this->form_validation->set_rules('task_due_m', 'Task due month', 'required');
@@ -71,7 +75,8 @@ class Tasks extends MY_Controller
             $save_data = array(
               'task_desc' => $this->input->post('task_desc'),
               'task_due_date' => $task_due_date,
-              'task_status' => 'todo'
+              'task_status' => 'todo',
+              'user_id' => $this->session->userdata('user_id')
             );
 
             if ($this->Tasks_model->save_task($save_data)) {
