@@ -28,8 +28,10 @@ class List_model extends CI_Model{
     return $this->db->update('lists', $data);
   }
 
-  public function get_lists(){
-    $this->db->order_by('name');
+  public function get_lists($user_id){
+
+    $this->db->where('user_id', $user_id);
+    $this->db->order_by('list_name');
     $query = $this->db->get('lists');
     return $query->result_array();
   }
