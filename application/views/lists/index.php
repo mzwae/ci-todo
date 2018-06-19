@@ -1,9 +1,22 @@
 <h2><?=$title?></h2>
+<?php echo form_open('lists/create'); ?>
+<div class="row">
+  <div class="col-lg-12">
+    <?php echo validation_errors(); ?>
+    <div class="input-group">
+      <input type="text" class="form-control" name="list_name" placeholder="Type new list here...">
+      <span class="input-group-btn">
+        <button class="btn btn-success" type="submit">Create</button>
+      </span>
+    </div>
+  </div>
+</div>
+<?php echo form_close(); ?>
 
 <ul class="list-group">
   <?php foreach($lists as $list): ?>
     <li class="list-group-item">
-      <a href="<?=base_url('lists/'.$list['list_id'])?>">
+      <a href="<?=base_url('tasks/index/'.$list['list_id'])?>">
         <?=$list['list_name']?>
       </a>
 

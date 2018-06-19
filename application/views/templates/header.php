@@ -16,7 +16,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?=base_url()?>">Todo application</a>
+          <a class="navbar-brand" href="<?=base_url()?>lists">Todo application</a>
       </div>
       <!-- Collection of nav links and other content for toggling -->
       <div id="navbarCollapse" class="collapse navbar-collapse">

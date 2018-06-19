@@ -18,9 +18,31 @@ class Lists extends CI_Controller{
 
   }
 
-  public function display(){}
+  public function display(){
+    $list_id = $this->uri->segment(3);
+    $user_id = $this->session->userdata('user_id');
+    
+  }
 
-  public function create(){}
+  public function create(){
+    if (!$this->session->userdata('logged_in')) {
+      redirect('users/login');
+    }
+
+    $this->form_validation->set_rules('list_name', 'List Name', 'required');
+    $data['title'] = 'Your Task Lists';
+
+    if ($this->form_validation->run() == false) {
+      $this->load->view('templates/header');
+      $this->load->view('lists/index', $data);
+      $this->load->view('templates/footer');
+    } else {
+      $this->List_model->create_list();
+      $this->session->set_flashdata('list_created', 'Your new list has been created successfully!');
+      redirect('lists');
+    }
+
+  }
 
   public function edit(){}
 

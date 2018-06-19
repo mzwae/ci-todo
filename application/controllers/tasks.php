@@ -60,7 +60,9 @@ class Tasks extends MY_Controller
               'size' => '35'
             );
 
-            $page_data['query'] = $this->Tasks_model->get_tasks();
+            $list_id = $this->uri->segment(3);
+
+            $page_data['query'] = $this->Tasks_model->get_tasks('ASC', $list_id);
 
             $this->load->view('templates/header');
             $this->load->view('tasks/view', $page_data);
@@ -85,7 +87,7 @@ class Tasks extends MY_Controller
               $this->session->set_flashdata('task_error', 'Error Creating Task');
 
             }
-            redirect('tasks');
+            redirect('tasks/index/'.$list_id);
 
 
         }
