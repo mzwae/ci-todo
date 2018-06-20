@@ -1,5 +1,5 @@
 <div class="page-heder">
-  <?php echo form_open('tasks/index'); ?>
+  <?php echo form_open('tasks/index/'.$list_id); ?>
     <div class="row">
       <div class="col-lg-12">
         <?php echo validation_errors(); ?>

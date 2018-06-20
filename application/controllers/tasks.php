@@ -23,6 +23,9 @@ class Tasks extends MY_Controller
         $this->form_validation->set_rules('task_due_m', 'Task due month', 'required');
         $this->form_validation->set_rules('task_due_y', 'Task due year', 'required');
 
+        $list_id = $this->uri->segment(3);
+        echo "list id is $list_id";
+
 
         if ($this->form_validation->run() == false) {
             $page_data['dir'] = 'DESC';
@@ -60,9 +63,10 @@ class Tasks extends MY_Controller
               'size' => '35'
             );
 
-            $list_id = $this->uri->segment(3);
+
 
             $page_data['query'] = $this->Tasks_model->get_tasks('ASC', $list_id);
+            $page_data['list_id'] = $list_id;
 
             $this->load->view('templates/header');
             $this->load->view('tasks/view', $page_data);
@@ -70,15 +74,14 @@ class Tasks extends MY_Controller
         } else {
             if ($this->input->post('task_due_y') && $this->input->post('task_due_m') && $this->input->post('task_due_d')) {
               $task_due_date = $this->input->post('task_due_y').'-'.$this->input->post('task_due_m').'-'.$this->input->post('task_due_d');
-            } else {
-              $task_due_date = null;
             }
 
             $save_data = array(
               'task_desc' => $this->input->post('task_desc'),
               'task_due_date' => $task_due_date,
               'task_status' => 'todo',
-              'user_id' => $this->session->userdata('user_id')
+              'user_id' => $this->session->userdata('user_id'),
+              'list_id' => $this->uri->segment(3)
             );
 
             if ($this->Tasks_model->save_task($save_data)) {
