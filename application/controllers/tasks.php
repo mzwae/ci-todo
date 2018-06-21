@@ -8,6 +8,7 @@ class Tasks extends MY_Controller
         $this->load->helper('string');
         $this->load->helper('text');
         $this->load->model('Tasks_model');
+        $this->load->model('List_model');
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
     }
@@ -24,7 +25,7 @@ class Tasks extends MY_Controller
         $this->form_validation->set_rules('task_due_y', 'Task due year', 'required');
 
         $list_id = $this->uri->segment(3);
-        echo "list id is $list_id";
+        $list_name = $this->List_model->get_list_name($list_id);
 
 
         if ($this->form_validation->run() == false) {
@@ -67,6 +68,7 @@ class Tasks extends MY_Controller
 
             $page_data['query'] = $this->Tasks_model->get_tasks('ASC', $list_id);
             $page_data['list_id'] = $list_id;
+            $page_data['list_name'] = $list_name;
 
             $this->load->view('templates/header');
             $this->load->view('tasks/view', $page_data);
@@ -81,7 +83,7 @@ class Tasks extends MY_Controller
               'task_due_date' => $task_due_date,
               'task_status' => 'todo',
               'user_id' => $this->session->userdata('user_id'),
-              'list_id' => $this->uri->segment(3)
+              'list_id' => $list_id
             );
 
             if ($this->Tasks_model->save_task($save_data)) {
@@ -99,6 +101,7 @@ class Tasks extends MY_Controller
     public function status(){
       $page_data['task_status'] = $this->uri->segment(3);
       $task_id = $this->uri->segment(4);
+      $list_id = $this->uri->segment(5);
 
       if ($this->Tasks_model->change_task_status($task_id, $page_data)) {
         $this->session->set_flashdata('task_status_change', 'Task Status Changed Successfully!');
@@ -106,7 +109,7 @@ class Tasks extends MY_Controller
         $this->session->set_flashdata('task_status_error', 'Changing Task Status Failed');
       }
 
-      redirect('tasks');
+      redirect('tasks/index/'.$list_id);
 
     }
 

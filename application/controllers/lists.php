@@ -21,11 +21,6 @@ class Lists extends CI_Controller{
 
   }
 
-  public function display(){
-    $list_id = $this->uri->segment(3);
-    $user_id = $this->session->userdata('user_id');
-
-  }
 
   public function create(){
     if (!$this->session->userdata('logged_in')) {

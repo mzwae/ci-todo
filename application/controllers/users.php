@@ -68,7 +68,7 @@ class Users extends CI_Controller
 
               // Set message
               $this->session->set_flashdata('user_loggedin', 'You are now logged in');
-              redirect('tasks');
+              redirect('lists');
             } else {
               // Set message
               $this->session->set_flashdata('login_failed', 'Invalid email/password!');

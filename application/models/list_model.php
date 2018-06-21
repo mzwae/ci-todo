@@ -36,6 +36,13 @@ class List_model extends CI_Model{
     return $query->result_array();
   }
 
+  public function get_list_name($list_id){
+    $this->db->where('list_id', $list_id);
+    $query = $this->db->get('lists');
+    $array = $query->result_array();
+    return $array[0]['list_name'];
+  }
+
   public function display_list(){}
 }
 

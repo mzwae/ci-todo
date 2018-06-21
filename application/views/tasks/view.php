@@ -1,5 +1,6 @@
 <div class="page-heder">
   <?php echo form_open('tasks/index/'.$list_id); ?>
+  <h1>This is your <?=$list_name?> list contents...</h1>
     <div class="row">
       <div class="col-lg-12">
         <?php echo validation_errors(); ?>
@@ -77,8 +78,8 @@
     </td>
     <td width="20%"><?php echo date_format(date_create($row->task_due_date), 'd/M/Y');?></td>
     <td width="10%">
-      <?php if($row->task_status == 'todo'){echo anchor('tasks/status/done/'.$row->task_id, 'Todo');} ?>
-      <?php if($row->task_status == 'done'){echo anchor('tasks/status/todo/'.$row->task_id, 'Done');} ?>
+      <?php if($row->task_status == 'todo'){echo anchor('tasks/status/done/'.$row->task_id.'/'.$list_id, 'Todo');} ?>
+      <?php if($row->task_status == 'done'){echo anchor('tasks/status/todo/'.$row->task_id.'/'.$list_id, 'Done');} ?>
     </td>
     <td width="10%">
       <a href="tasks/delete/<?=$row->task_id?>">Delete</a>
