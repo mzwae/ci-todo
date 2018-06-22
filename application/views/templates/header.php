@@ -35,6 +35,7 @@
             <li><a href="<?=base_url();?>tasks">Creat List</a></li>
             <li><a href="<?=base_url();?>lists">My Lists</a></li>
             <li><a href="<?=base_url();?>users/logout">Logout</a></li>
+            <li><a href="<?=base_url();?>lists"><?=$this->session->userdata('email')?></a></li>
           <?php endif; ?>
         </ul>
 
