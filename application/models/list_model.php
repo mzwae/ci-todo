@@ -14,7 +14,6 @@ class List_model extends CI_Model{
   public function delete_list($list_id){
     $this->db->where('list_id', $list_id);
     $this->db->delete('lists');
-    $this->db->delete('tasks');
     return true;
 
   }

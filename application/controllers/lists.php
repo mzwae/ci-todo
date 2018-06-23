@@ -44,7 +44,17 @@ class Lists extends CI_Controller{
 
   public function edit(){}
 
-  public function delete(){}
+  public function delete($id){
+    if (!$this->session->userdata('logged_in')) {
+      redirect('users/login');
+    }
+
+    $this->List_model->delete_list($id);
+    $this->session->set_flashdata('list_deleted', 'Your list has been deleted!');
+
+    redirect('lists');
+
+  }
 
 
 }

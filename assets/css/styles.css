@@ -2,3 +2,7 @@ footer{
   margin-bottom:50px;
   text-align:center;
  }
+
+ .list-delete{
+  display: inline;
+}

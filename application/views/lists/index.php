@@ -19,6 +19,9 @@
       <a href="<?=base_url('tasks/index/'.$list['list_id'])?>">
         <?=$list['list_name']?>
       </a>
+      <form class="list-delete" action="lists/delete/<?=$list['list_id']?>" method="post">
+          <input type="submit" value="[X]" class="btn-link text-danger">
+        </form>
 
     </li>
   <?php endforeach; ?>
