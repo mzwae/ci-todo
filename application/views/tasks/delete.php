@@ -16,6 +16,7 @@
     <?php echo form_submit('submit', 'Delete'); ?> or <a href="<?=base_url()?>tasks">Cancel</a>
 
     <?php echo form_hidden('id', $row->task_id); ?>
+    <?php echo form_hidden('list_id', $row->list_id); ?>
   <?php endforeach; ?>
 
 <?php echo form_close(); ?>

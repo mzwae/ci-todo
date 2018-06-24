@@ -52,7 +52,7 @@
       echo '<p class="alert alert-danger">' . $this->session->flashdata('task_error') . '</p>';
   }
   if ($this->session->flashdata('task_deleted')) {
-      echo '<p class="alert alert-danger">' . $this->session->flashdata('task_deleted') . '</p>';
+      echo '<p class="alert alert-success">' . $this->session->flashdata('task_deleted') . '</p>';
   }
   if ($this->session->flashdata('task_status_change')) {
       echo '<p class="alert alert-success">' . $this->session->flashdata('task_status_change') . '</p>';

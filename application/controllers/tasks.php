@@ -123,6 +123,7 @@ class Tasks extends MY_Controller
       }
 
       $data['page_heading'] = 'Confirm delete?';
+      $list_id = $this->input->post('list_id');
 
       if ($this->form_validation->run() == false) {
         $data['query'] = $this->Tasks_model->get_task($id);
@@ -132,7 +133,7 @@ class Tasks extends MY_Controller
       } else {
         if ($this->Tasks_model->delete($id)) {
             $this->session->set_flashdata('task_deleted', 'Task Deleted Successfully!');
-          redirect('tasks');
+          redirect('tasks/index/'.$list_id);
         }
       }
 
@@ -140,8 +141,11 @@ class Tasks extends MY_Controller
     }
 
     public function sort(){
-      $direction = $this->uri->segment(3);
-      $page_data['query'] = $this->Tasks_model->get_tasks($direction);
+      $direction = $this->uri->segment(4);
+      $list_id = $this->uri->segment(3);
+      $page_data['list_id'] = $list_id;
+      $page_data['list_name'] = $this->List_model->get_list_name($list_id);
+      $page_data['query'] = $this->Tasks_model->get_tasks($direction, $list_id);
       if ($direction == 'ASC') {
         $page_data['dir'] = 'DESC';
         $page_data['entity'] = '&darr;';

@@ -1,6 +1,6 @@
 <div class="page-heder">
   <?php echo form_open('tasks/index/'.$list_id); ?>
-  <h1>This is your <?=$list_name?> list contents...</h1>
+  <h1>This is your <b><?=$list_name?></b> list contents...</h1>
     <div class="row">
       <div class="col-lg-12">
         <?php echo validation_errors(); ?>
@@ -50,7 +50,7 @@
   <tr>
     <td><b>Task</b></td>
     <td>
-      <b>Due Date</b> | <a href="<?=base_url()?>tasks/sort/<?=$dir?>"><?=$dir?> <?=$entity?></a>
+      <b>Due Date</b> | <a href="<?=base_url()?>tasks/sort/<?=$list_id?>/<?=$dir?>"><?=$dir?> <?=$entity?></a>
     </td>
     <td>
       <b>Status</b>
@@ -82,7 +82,7 @@
       <?php if($row->task_status == 'done'){echo anchor('tasks/status/todo/'.$row->task_id.'/'.$list_id, 'Done');} ?>
     </td>
     <td width="10%">
-      <a href="tasks/delete/<?=$row->task_id?>">Delete</a>
+      <a href="<?=base_url()?>tasks/delete/<?=$row->task_id?>">Delete</a>
     </td>
 </tr>
   <?php endforeach; ?>
