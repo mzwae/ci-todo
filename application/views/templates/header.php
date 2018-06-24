@@ -63,6 +63,9 @@
   if ($this->session->flashdata('login_failed')) {
       echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failed') . '</p>';
   }
+  if ($this->session->flashdata('list_deleted')) {
+      echo '<p class="alert alert-danger">' . $this->session->flashdata('list_deleted') . '</p>';
+  }
   if ($this->session->flashdata('user_loggedin')) {
       echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedin') . '</p>';
   }
