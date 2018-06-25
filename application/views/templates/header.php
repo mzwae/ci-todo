@@ -69,4 +69,7 @@
   if ($this->session->flashdata('user_loggedin')) {
       echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedin') . '</p>';
   }
+  if ($this->session->flashdata('user_loggedout')) {
+      echo '<p class="alert alert-danger">' . $this->session->flashdata('user_loggedout') . '</p>';
+  }
   ?>
