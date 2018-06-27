@@ -25,8 +25,8 @@
       </form>
 
       <div class="progress">
-        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?=$tasks_progress?>" aria-valuemin="0"   aria-valuemax="100" style="width:<?=$tasks_progress?>">
-            <?=$tasks_progress?>
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?=$this->List_model->get_list_progress($list['list_id'])?>%" aria-valuemin="0"   aria-valuemax="100" style="width:<?=$this->List_model->get_list_progress($list['list_id'])?>%">
+            <?=$this->List_model->get_list_progress($list['list_id'])?>%
           </div>
         </div>
 

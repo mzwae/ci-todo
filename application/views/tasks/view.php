@@ -1,6 +1,11 @@
 <div class="page-heder">
   <?php echo form_open('tasks/index/'.$list_id); ?>
   <h1>This is your <b><?=$list_name?></b> list contents...</h1>
+  <div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?=$this->List_model->get_list_progress($list_id)?>%" aria-valuemin="0"   aria-valuemax="100" style="width:<?=$this->List_model->get_list_progress($list_id)?>%">
+        <?=$this->List_model->get_list_progress($list_id)?>%
+      </div>
+    </div>
     <div class="row">
       <div class="col-lg-12">
         <?php echo validation_errors(); ?>

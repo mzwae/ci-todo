@@ -14,6 +14,8 @@ class Lists extends CI_Controller{
     $data['title'] = 'Your Task Lists';
     $data['lists'] = $this->List_model->get_lists($user_id);
 
+    
+
     $this->load->view('templates/header');
     $this->load->view('lists/index', $data);
     $this->load->view('templates/footer');

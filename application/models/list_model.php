@@ -45,6 +45,28 @@ class List_model extends CI_Model{
     return $array[0]['list_name'];
   }
 
+  public function get_list_progress($list_id){
+    $this->db->where('list_id', $list_id);
+    $query = $this->db->get('tasks');
+    $array = $query->result_array();
+    $completed_tasks = 0;
+    if (sizeof($array) > 0) {
+      for ($i=0; $i < sizeof($array); $i++) {
+        if ($array[$i]['task_status'] === 'done') {
+          $completed_tasks++;
+        }
+
+      }
+      $completion_rate = ceil(($completed_tasks/sizeof($array)) * 100);
+    }  else {
+      $completion_rate = 0;
+    }
+
+
+
+    return $completion_rate;
+  }
+
   public function display_list(){}
 }
 

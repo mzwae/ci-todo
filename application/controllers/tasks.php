@@ -26,6 +26,8 @@ class Tasks extends MY_Controller
 
         $list_id = $this->uri->segment(3);
         $list_name = $this->List_model->get_list_name($list_id);
+        $list_pr = $this->List_model->get_list_progress($list_id);
+
 
 
         if ($this->form_validation->run() == false) {
