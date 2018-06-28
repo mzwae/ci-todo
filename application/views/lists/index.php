@@ -4,7 +4,7 @@
   <div class="col-lg-12">
     <?php echo validation_errors(); ?>
     <div class="input-group">
-      <input type="text" class="form-control" name="list_name" placeholder="Type new list here...">
+      <input type="text" class="form-control" name="list_name" placeholder="Create new list here...">
       <span class="input-group-btn">
         <button class="btn btn-success" type="submit">Create</button>
       </span>

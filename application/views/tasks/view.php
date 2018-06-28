@@ -10,7 +10,7 @@
       <div class="col-lg-12">
         <?php echo validation_errors(); ?>
         <div class="input-group">
-          <input type="text" class="form-control" name="task_desc" placeholder="Type new task here...">
+          <input type="text" class="form-control" name="task_desc" placeholder="Add new task here...">
           <span class="input-group-btn">
             <button class="btn btn-success" type="submit">Add</button>
           </span>
